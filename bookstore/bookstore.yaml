@@ -1,0 +1,114 @@
+openapi: '3.0.0'
+info:
+  title: bookstore
+  version: '1.0'
+  description: api for working with books
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /books:
+    get:
+      summary: All books
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+              examples: {}
+      operationId: get-books
+      tags:
+        - book
+      description: list books
+    post:
+      summary: ''
+      operationId: post-books
+      responses:
+        '201':
+          description: Created
+        '500':
+          description: Internal Server Error
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+  '/books/{id}':
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+    get:
+      summary: one book
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Not Found
+      operationId: get-books-id
+      parameters: []
+    put:
+      summary: update one book
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '304':
+          description: Not Modified
+        '404':
+          description: Not Found
+      operationId: put-books-id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+    delete:
+      summary: delete one book
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '304':
+          description: Not Modified
+        '404':
+          description: Not Found
+      operationId: delete-books-id
+components:
+  schemas:
+    Book:
+      title: Book
+      type: object
+      description: just book
+      properties:
+        name:
+          type: string
+        genre:
+          type: string
+          enum:
+            - CLASSIC
+            - FICTION
+            - EDUCATION
+            - BIBLIOGRAPHY
+        pages:
+          type: integer
+          exclusiveMinimum: true
+        price:
+          type: number
+          exclusiveMinimum: true
+        publishDate:
+          type: string
+          format: date
+      required:
+        - name
+  securitySchemes: {}
