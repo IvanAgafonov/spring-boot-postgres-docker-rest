@@ -1,7 +1,8 @@
-package org.openapitools.api;
+package ru.bookstore.controller;
 
-import org.openapitools.model.Book;
-import org.openapitools.service.BookService;
+import ru.bookstore.api.BooksApi;
+import ru.bookstore.model.Book;
+import ru.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

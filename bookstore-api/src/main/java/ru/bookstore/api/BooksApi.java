@@ -3,23 +3,18 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-package org.openapitools.api;
+package ru.bookstore.api;
 
-import org.openapitools.model.Book;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.annotations.ApiIgnore;
+import ru.bookstore.model.Book;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-08T15:10:05.181404+03:00[Europe/Moscow]")
 @Validated
@@ -66,15 +61,6 @@ public interface BooksApi {
         produces = { "application/json" }
     )
     default ResponseEntity<List<Book>> getBooks() {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"pages\" : 0, \"price\" : 6.027456183070403, \"name\" : \"name\", \"genre\" : \"CLASSIC\", \"publishDate\" : \"2000-01-23\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -96,15 +82,6 @@ public interface BooksApi {
         produces = { "application/json" }
     )
     default ResponseEntity<Book> getBooksId(@ApiParam(value = "",required=true) @PathVariable("id") Integer id) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"pages\" : 0, \"price\" : 6.027456183070403, \"name\" : \"name\", \"genre\" : \"CLASSIC\", \"publishDate\" : \"2000-01-23\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }

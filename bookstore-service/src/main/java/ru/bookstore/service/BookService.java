@@ -1,8 +1,8 @@
-package org.openapitools.service;
+package ru.bookstore.service;
 
-import org.openapitools.model.Book;
-import org.openapitools.model.BookEntity;
-import org.openapitools.repository.CustomizedBookCrudRepository;
+import ru.bookstore.model.Book;
+import ru.bookstore.model.BookEntity;
+import ru.bookstore.repository.CustomizedBookCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

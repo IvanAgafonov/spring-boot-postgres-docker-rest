@@ -1,4 +1,4 @@
-package org.openapitools.model;
+package ru.bookstore.model;
 
 import javax.persistence.*;
 import java.util.Objects;

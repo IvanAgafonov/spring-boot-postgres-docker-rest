@@ -1,4 +1,4 @@
-package org.openapitools;
+package ru.bookstore.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +19,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("org.openapitools")
+@ComponentScan("ru.bookstore")
 @PropertySource("classpath:application.properties")
 public class ApplicationConfig {
     @Autowired
@@ -40,7 +40,7 @@ public class ApplicationConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("org.openapitools.model");
+        em.setPackagesToScan("ru.bookstore.model");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

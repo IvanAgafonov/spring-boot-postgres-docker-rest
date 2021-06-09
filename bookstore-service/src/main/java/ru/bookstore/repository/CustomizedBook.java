@@ -1,6 +1,6 @@
-package org.openapitools.repository;
+package ru.bookstore.repository;
 
-import org.openapitools.model.BookEntity;
+import ru.bookstore.model.BookEntity;
 
 import java.util.List;
 

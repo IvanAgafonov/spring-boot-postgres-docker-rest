@@ -1,4 +1,4 @@
-package org.openapitools.model;
+package ru.bookstore.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;

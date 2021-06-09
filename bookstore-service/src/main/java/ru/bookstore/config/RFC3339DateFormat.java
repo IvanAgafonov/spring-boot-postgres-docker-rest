@@ -1,4 +1,4 @@
-package org.openapitools;
+package ru.bookstore.config;
 
 import com.fasterxml.jackson.databind.util.StdDateFormat;
 
