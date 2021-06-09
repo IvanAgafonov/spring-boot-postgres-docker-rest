@@ -1,4 +1,4 @@
 FROM bellsoft/liberica-openjdk-alpine-musl:11.0.11
 WORKDIR /usr/local/app
-ADD bookstore-app-0.0.1-SNAPSHOT.jar app.jar
-CMD java -jar ./app.jar
+ADD bookstore-app.jar app1.jar
+CMD java -jar ./app1.jar

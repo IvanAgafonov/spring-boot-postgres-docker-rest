@@ -90,6 +90,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <outputDirectory>${project.parent.basedir}/target</outputDirectory>
+                    <finalName>bookstore-app</finalName>
+                </configuration>
             </plugin>
         </plugins>
     </build>

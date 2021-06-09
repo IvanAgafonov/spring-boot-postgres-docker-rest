@@ -2,7 +2,7 @@ version: '3.8'
 services:
   postgres:
     build:
-      context: services/postgres
+      context: docker/services/postgres
       dockerfile: Dockerfile
     environment:
       - POSTGRES_USER=postgres
@@ -14,7 +14,7 @@ services:
   
   app:
     build:
-      context: services/app
+      context: ./docker/services/app
       dockerfile: Dockerfile
     environment:
       - POSTGRES_USER=postgres
