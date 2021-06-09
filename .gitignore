@@ -29,6 +29,7 @@ hs_err_pid*
 cmake-build-*/
 
 # General
+**/.DS_Store
 .DS_Store
 .AppleDouble
 .LSOverride
