@@ -16,6 +16,8 @@ services:
     build:
       context: ./docker/services/app
       dockerfile: Dockerfile
+    volumes:
+      - ./target:/usr/local/app/tmp
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=132456pP#
