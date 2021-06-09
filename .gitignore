@@ -29,10 +29,22 @@ hs_err_pid*
 cmake-build-*/
 
 # General
-**/.DS_Store
 .DS_Store
 .AppleDouble
 .LSOverride
+
+## Maven:
+**/.mvn/
+mvnw
+mvnw.bat
+mvnw.cmd
+/log/
+*.log*
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
 
 # Icon must end with two \r
 Icon
