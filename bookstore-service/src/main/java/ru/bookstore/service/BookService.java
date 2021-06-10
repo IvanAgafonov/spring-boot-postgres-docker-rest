@@ -1,7 +1,7 @@
 package ru.bookstore.service;
 
 import ru.bookstore.model.Book;
-import ru.bookstore.model.BookEntity;
+import ru.bookstore.entity.BookEntity;
 import ru.bookstore.repository.CustomizedBookCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package ru.bookstore.repository;
 
-import ru.bookstore.model.BookEntity;
+import ru.bookstore.entity.BookEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

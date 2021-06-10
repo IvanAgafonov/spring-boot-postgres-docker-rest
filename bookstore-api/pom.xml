@@ -8,27 +8,22 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>bookstore-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>bookstore-api</name>
+
     <properties>
         <java.version>11</java.version>
         <springfox-version>2.9.2</springfox-version>
     </properties>
+
     <dependencies>
+        <!-- Spring -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
         <!--SpringFox dependencies -->
@@ -56,6 +51,10 @@
             <artifactId>jackson-databind-nullable</artifactId>
             <version>0.2.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!-- Bean Validation API support -->
         <dependency>
             <groupId>javax.validation</groupId>
@@ -69,12 +68,51 @@
 
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <classifier>exe</classifier>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <classifier>exe</classifier>
-                </configuration>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>4.3.1</version>
+                <executions>
+                    <execution>
+                        <id>spring</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/bookstore.yaml</inputSpec>
+                            <generatorName>spring</generatorName>
+                            <configOptions>
+                                <artifactDescription>API</artifactDescription>
+                                <artifactId>openapi-spring</artifactId>
+                                <artifactVersion>0.0.1</artifactVersion>
+                                <dateLibrary>java8-localdatetime</dateLibrary>
+                                <developerName>ivanagafonov</developerName>
+                                <developerOrganization>vtb</developerOrganization>
+                                <developerOrganizationUrl>https://www.vtb.ru/</developerOrganizationUrl>
+                                <disableHtmlEscaping>true</disableHtmlEscaping>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <interfaceOnly>true</interfaceOnly>
+                                <apiPackage>ru.bookstore.api</apiPackage>
+                                <modelPackage>ru.bookstore.model</modelPackage>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <serializableModel>true</serializableModel>
+                                <snapshotVersion>true</snapshotVersion>
+                                <sortModelPropertiesByRequiredFlag>false</sortModelPropertiesByRequiredFlag>
+                                <sortParamsByRequiredFlag>false</sortParamsByRequiredFlag>
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <useBeanValidation>false</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

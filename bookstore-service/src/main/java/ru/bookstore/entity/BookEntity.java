@@ -1,4 +1,6 @@
-package ru.bookstore.model;
+package ru.bookstore.entity;
+
+import ru.bookstore.model.Book;
 
 import javax.persistence.*;
 import java.util.Objects;
