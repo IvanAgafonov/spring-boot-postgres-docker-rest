@@ -1,5 +1,6 @@
 package ru.bookstore.service;
 
+import lombok.RequiredArgsConstructor;
 import ru.bookstore.model.Book;
 import ru.bookstore.entity.BookEntity;
 import ru.bookstore.repository.CustomizedBookCrudRepository;
@@ -11,10 +12,10 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class BookService {
 
-    @Autowired
-    CustomizedBookCrudRepository bookRepository;
+    private final CustomizedBookCrudRepository bookRepository;
 
     public Book getBook(long id) {
         BookEntity book = bookRepository.findById(id).orElse(null);

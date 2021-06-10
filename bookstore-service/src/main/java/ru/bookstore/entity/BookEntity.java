@@ -12,7 +12,6 @@ public class BookEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Embedded
     private Book book;
 
     public BookEntity() {}

@@ -1,5 +1,6 @@
 package ru.bookstore.controller;
 
+import lombok.RequiredArgsConstructor;
 import ru.bookstore.api.BooksApi;
 import ru.bookstore.model.Book;
 import ru.bookstore.service.BookService;
@@ -14,23 +15,11 @@ import java.util.List;
 import java.util.Optional;
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-08T15:10:05.181404+03:00[Europe/Moscow]")
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("${openapi.bookstore.base-path:}")
 public class BooksApiController implements BooksApi {
 
-    private final NativeWebRequest request;
-
-    @Autowired
-    BookService bookService;
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public BooksApiController(NativeWebRequest request) {
-        this.request = request;
-    }
-
-    @Override
-    public Optional<NativeWebRequest> getRequest() {
-        return Optional.ofNullable(request);
-    }
+    private final BookService bookService;
 
     @Override
     public ResponseEntity<Void> deleteBooksId(Integer id) {

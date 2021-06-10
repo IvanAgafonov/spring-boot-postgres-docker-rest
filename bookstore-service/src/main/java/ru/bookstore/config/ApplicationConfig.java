@@ -1,5 +1,6 @@
 package ru.bookstore.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -19,11 +20,12 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@RequiredArgsConstructor
 @ComponentScan("ru.bookstore")
 @PropertySource("classpath:application.properties")
 public class ApplicationConfig {
-    @Autowired
-    private Environment env;
+
+    private final Environment env;
 
     @Bean
     public DataSource dataSource() {
@@ -40,7 +42,7 @@ public class ApplicationConfig {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("ru.bookstore.model");
+        em.setPackagesToScan("ru.bookstore.entity");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
