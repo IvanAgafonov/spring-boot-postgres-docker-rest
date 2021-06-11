@@ -8,8 +8,6 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=bookstore
       - POSTGRES_PASSWORD=132456pP#
-    volumes:
-      - "db-data:/var/lib/postgresql/data"
   
   
   app:
