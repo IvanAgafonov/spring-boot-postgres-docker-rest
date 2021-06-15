@@ -16,9 +16,6 @@ public class BookEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Embedded
-    private Book book;
-
     @Column(columnDefinition = "jsonb")
     @Type(type = "jsonb")
     private Book bookJson;
@@ -27,7 +24,6 @@ public class BookEntity {
 
     public BookEntity(long id, Book book) {
         this.id = id;
-        this.book = book;
         this.bookJson = book;
     }
 
@@ -40,11 +36,10 @@ public class BookEntity {
     }
 
     public Book getBook() {
-        return book;
+        return bookJson;
     }
 
     public BookEntity setBook(Book book) {
-        this.book = book;
         this.bookJson = book;
         return this;
     }
