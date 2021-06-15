@@ -1,0 +1,3 @@
+SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/bookstore
+POSTGRES_USER: postgres
+POSTGRES_PASSWORD: 132456pP#
