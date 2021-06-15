@@ -36,7 +36,7 @@ public class BooksApiController implements BooksApi {
     }
 
     @Override
-    public ResponseEntity<Object> postBooks(Book book) {
+    public ResponseEntity<Void> postBooks(Book book) {
         URI location = bookService.addBookWithRandomGenre(book);
         return ResponseEntity.created(location).build();
     }
