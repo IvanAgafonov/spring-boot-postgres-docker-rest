@@ -1,3 +1,7 @@
+-- liquibase formatted sql
+-- changeset agafonov:15.06.2021-1
+-- preconditions onFail:MARK_RAN
+-- precondition-sql-check expectedResult:0 select count(*) from pg_catalog.pg_tables where tablename = 'books';
 CREATE SEQUENCE public.books_id_seq
     INCREMENT 1
     START 1
@@ -11,12 +15,7 @@ ALTER SEQUENCE public.books_id_seq
 CREATE TABLE public.books
 (
     id bigint NOT NULL DEFAULT nextval('books_id_seq'::regclass),
-    genre integer,
-    name character varying(255) COLLATE pg_catalog."default",
-    pages integer,
-    price numeric(19,2),
-    publishdate date,
-    bookjson jsonb,
+    book_json jsonb,
     CONSTRAINT books_pkey PRIMARY KEY (id)
 )
     WITH (

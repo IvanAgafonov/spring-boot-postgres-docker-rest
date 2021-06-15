@@ -29,10 +29,6 @@ paths:
       responses:
         '201':
           description: Created
-          content:
-            application/json:
-              schema:
-                type: object
         '500':
           description: Internal Server Error
       requestBody:
