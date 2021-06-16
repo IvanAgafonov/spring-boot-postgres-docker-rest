@@ -10,10 +10,6 @@ spring:
       hibernate:
         format_sql: true
     show-sql: false
-  datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${POSTGRES_USER}
-    password: ${POSTGRES_PASSWORD}
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
   jackson:

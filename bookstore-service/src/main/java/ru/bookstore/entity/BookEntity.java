@@ -2,12 +2,12 @@ package ru.bookstore.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.*;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import ru.bookstore.model.Book;
 
 import javax.persistence.*;
 import java.util.Objects;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 @Entity
 @Getter

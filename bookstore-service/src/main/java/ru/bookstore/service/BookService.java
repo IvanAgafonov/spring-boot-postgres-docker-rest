@@ -1,16 +1,14 @@
 package ru.bookstore.service;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import ru.bookstore.entity.BookEntity;
 import ru.bookstore.exception.InternalServerException;
 import ru.bookstore.exception.NotFoundBookException;
 import ru.bookstore.exception.NotModifiedBookException;
 import ru.bookstore.model.Book;
-import ru.bookstore.entity.BookEntity;
 import ru.bookstore.repository.CustomizedBookCrudRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.util.List;

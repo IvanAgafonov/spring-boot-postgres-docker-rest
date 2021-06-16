@@ -1,7 +1,7 @@
 package ru.bookstore.repository;
 
-import ru.bookstore.entity.BookEntity;
 import org.springframework.data.repository.CrudRepository;
+import ru.bookstore.entity.BookEntity;
 
 import java.util.List;
 

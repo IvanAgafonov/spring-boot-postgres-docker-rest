@@ -1,20 +1,17 @@
 package ru.bookstore.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import ru.bookstore.api.BooksApi;
 import ru.bookstore.model.Book;
 import ru.bookstore.service.BookService;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.net.URI;
 import java.util.List;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-08T15:10:05.181404+03:00[Europe/Moscow]")
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("${openapi.bookstore.base-path:}")
 public class BooksApiController implements BooksApi {
 
     private final BookService bookService;

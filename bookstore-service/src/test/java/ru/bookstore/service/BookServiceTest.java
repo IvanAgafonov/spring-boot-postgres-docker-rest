@@ -6,44 +6,33 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.bookstore.entity.BookEntity;
-import ru.bookstore.exception.NotFoundBookException;
 import ru.bookstore.model.Book;
 import ru.bookstore.repository.CustomizedBookCrudRepository;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class BookServiceTest {
     private static final long BOOK_ID = 10;
 
-    @MockBean
-    CustomizedBookCrudRepository repository;
+    @Mock
+    private CustomizedBookCrudRepository repository;
 
-    BookService bookService;
-    BookEntity bookEntity;
+    @InjectMocks
+    private BookService bookService;
 
-    @Before
-    public void bookServiceCreate() {
-        bookService = new BookService(repository);
-        Book book = new Book();
-        book.setName("test");
-        book.setGenre(Book.GenreEnum.CLASSIC);
-        book.setPages(100);
-        book.setPrice(BigDecimal.valueOf(1.1));
-        book.setPublishDate(LocalDate.now());
-        bookEntity = new BookEntity(BOOK_ID, book);
-    }
+    private final BookEntity bookEntity = new BookEntity();
+
 
     @Test
     public void testGetAllBooks() {
