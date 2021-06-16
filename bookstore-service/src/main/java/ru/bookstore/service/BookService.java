@@ -29,13 +29,13 @@ public class BookService {
         if (book == null) {
             throw new NotFoundBookException(id);
         }
-        return book.getBook();
+        return book.getBookJson();
     }
 
     public List<Book> getAllBooks() {
         return bookRepository.findAll()
                 .stream()
-                .map(BookEntity::getBook)
+                .map(BookEntity::getBookJson)
                 .collect(Collectors.toList());
     }
 

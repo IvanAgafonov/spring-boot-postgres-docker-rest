@@ -1,6 +1,7 @@
 package ru.bookstore.entity;
 
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import lombok.*;
 import ru.bookstore.model.Book;
 
 import javax.persistence.*;
@@ -9,6 +10,9 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 @Entity
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 @Table(name="Books")
 public class BookEntity {
@@ -19,30 +23,6 @@ public class BookEntity {
     @Column(columnDefinition = "jsonb")
     @Type(type = "jsonb")
     private Book bookJson;
-
-    public BookEntity() {}
-
-    public BookEntity(long id, Book book) {
-        this.id = id;
-        this.bookJson = book;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Book getBook() {
-        return bookJson;
-    }
-
-    public BookEntity setBook(Book book) {
-        this.bookJson = book;
-        return this;
-    }
 
     @Override
     public boolean equals(Object o) {

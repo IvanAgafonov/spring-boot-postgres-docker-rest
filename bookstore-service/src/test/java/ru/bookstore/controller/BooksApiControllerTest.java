@@ -1,5 +1,7 @@
 package ru.bookstore.controller;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -18,8 +20,8 @@ import ru.bookstore.service.BookService;
 
 import java.util.ArrayList;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -52,8 +54,8 @@ public class BooksApiControllerTest {
 
     @Test
     public void testGetBooksIdNotFound() throws Exception {
-        when(bookService.getBook(2L)).thenThrow(new NotFoundBookException(2L));
-        this.mockMvc.perform(get(URL_BOOK, "2").contentType(MediaType.APPLICATION_JSON))
+        when(bookService.getBook(anyLong())).thenThrow(new NotFoundBookException());
+        this.mockMvc.perform(get(URL_BOOK, BOOK_ID).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
@@ -61,7 +63,7 @@ public class BooksApiControllerTest {
     @Test
     public void testGetBooksId() throws Exception {
         //when
-        when(bookService.getBook(anyInt())).thenReturn(new Book());
+        when(bookService.getBook(anyLong())).thenReturn(new Book());
         //then
         this.mockMvc.perform(get(URL_BOOK, BOOK_ID).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
@@ -71,11 +73,19 @@ public class BooksApiControllerTest {
     @Test
     public void testDeleteBooksId() throws Exception {
         //when
-        when(bookService.getBook(anyInt())).thenReturn(new Book());
+        when(bookService.getBook(anyLong())).thenReturn(new Book());
         //then
         this.mockMvc.perform(delete(URL_BOOK, BOOK_ID).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testDeleteBooksIdNotFound() throws Exception {
+        doThrow(new NotFoundBookException()).when(bookService).deleteBook(isA(Long.class));
+        this.mockMvc.perform(delete(URL_BOOK, BOOK_ID).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -88,10 +98,18 @@ public class BooksApiControllerTest {
     @Test
     public void testPutBooksId() throws Exception {
         //when
-        when(bookService.getBook(anyInt())).thenReturn(new Book());
+        when(bookService.getBook(anyLong())).thenReturn(new Book());
         //then
         this.mockMvc.perform(put(URL_BOOK, BOOK_ID).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testPutBooksIdNotFound() throws Exception {
+        doThrow(new NotFoundBookException()).when(bookService).editBook(isA(Long.class), isNull());
+        this.mockMvc.perform(put(URL_BOOK, BOOK_ID).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNotFound());
     }
 }

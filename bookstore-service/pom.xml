@@ -127,6 +127,13 @@
                     <outputDirectory>${project.parent.basedir}/target</outputDirectory>
                     <finalName>bookstore-app</finalName>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
